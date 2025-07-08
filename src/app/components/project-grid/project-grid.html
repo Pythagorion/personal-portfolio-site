@@ -1,0 +1,22 @@
+<section class="projects-section">
+  <div class="projects-container">
+
+    <header class="projects-header">
+      <h2 class="section-title">Meine Projekte</h2>
+      <p class="section-subtitle">
+        Eine Auswahl meiner besten Arbeiten
+      </p>
+    </header>
+
+    <div class="projects-grid">
+      @for (project of projects; track project.id) {
+        <app-project-card
+          [project]="project"
+          [isExpanded]="expandedCardId === project.id"
+          (expandToggle)="onCardExpand($event)">
+        </app-project-card>
+      }
+    </div>
+
+  </div>
+</section>

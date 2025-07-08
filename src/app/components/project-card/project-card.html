@@ -1,0 +1,79 @@
+<div
+  class="project-card"
+  [class.expanded]="isExpanded"
+  (click)="toggleExpanded()"
+  (mouseenter)="onHover(true)"
+  (mouseleave)="onHover(false)">
+
+  <!-- Header Image mit Titel Overlay -->
+  <div class="card-header">
+    <div class="header-image" [style.background-image]="'url(' + project.imageUrl + ')'">
+      <div class="image-overlay" [class.blurred]="!isExpanded && !isHovering"></div>
+      <h3 class="project-title" [class.title-top]="isExpanded">
+        {{ project.title }}
+      </h3>
+    </div>
+  </div>
+
+  <!-- Beschreibungsbereich -->
+  <div class="card-content">
+
+    <!-- Beschreibungstext -->
+    <div class="description-section">
+      <p class="project-description" [class.truncated]="!isExpanded">
+        {{ isExpanded ? project.description : project.shortDescription }}
+      </p>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech-stack" [class.visible]="isExpanded || isHovering">
+      <h4 class="tech-title">Technologien:</h4>
+      <div class="tech-tags">
+        @for (tech of project.technologies; track tech) {
+          <span class="tech-tag">{{ tech }}</span>
+        }
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="project-links" [class.visible]="isExpanded || isHovering">
+      <a
+        [href]="project.githubUrl"
+        target="_blank"
+        class="project-link github-link"
+        (click)="$event.stopPropagation()">
+        <span class="link-icon">📁</span>
+        Repository
+      </a>
+
+      <!-- Live Demo Link (wenn deployed) -->
+      @if (project.isDeployed && project.liveUrl) {
+        <a
+          [href]="project.liveUrl"
+          target="_blank"
+          class="project-link live-link"
+          (click)="$event.stopPropagation()">
+          <span class="link-icon">🚀</span>
+          Live Demo
+        </a>
+      }
+
+      <!-- Deployment Status (wenn nicht deployed) -->
+      @if (!project.isDeployed) {
+        <div
+          class="deployment-status"
+          [title]="getDeploymentTooltip()">
+          <span class="status-icon">{{ getStatusIcon() }}</span>
+          <span class="status-text">{{ getStatusText() }}</span>
+        </div>
+      }
+    </div>
+
+  </div>
+
+  <!-- Expand Indicator -->
+  <div class="expand-indicator" [class.rotated]="isExpanded">
+    <span>▼</span>
+  </div>
+
+</div>

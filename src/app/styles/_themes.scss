@@ -1,0 +1,132 @@
+@use "variables" as *;
+
+// ===== LIGHT THEME =====
+[data-theme="light"] {
+  // Background Colors
+  --bg-primary: #{$neutral-50};        // Main background
+  --bg-secondary: #{$neutral-100};     // Card backgrounds
+  --bg-tertiary: #{$neutral-200};      // Subtle backgrounds
+  --bg-accent: #{$primary-color};      // Accent backgrounds
+
+  // Text Colors
+  --text-primary: #{$neutral-900};     // Main text
+  --text-secondary: #{$neutral-700};   // Secondary text
+  --text-tertiary: #{$neutral-500};    // Muted text
+  --text-accent: #{$primary-color};    // Accent text
+  --text-on-accent: #{$neutral-50};    // Text on accent background
+
+  // Heading Colors
+  --heading-primary: #{$neutral-900};
+  --heading-secondary: #{$neutral-800};
+  --heading-tertiary: #{$neutral-700};
+
+  // Border Colors
+  --border-primary: #{$neutral-200};
+  --border-secondary: #{$neutral-300};
+  --border-accent: #{$primary-color};
+
+  // Interactive Colors
+  --interactive-primary: #{$primary-color};
+  --interactive-primary-hover: #1d4ed8; // Manuell dunklere Version
+  --interactive-secondary: #{$neutral-600};
+  --interactive-secondary-hover: #{$neutral-700};
+
+  // Status Colors
+  --status-success: #{$success-color};
+  --status-warning: #{$warning-color};
+  --status-error: #{$error-color};
+
+  // Shadows
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+// ===== DARK THEME =====
+[data-theme="dark"] {
+  // Background Colors
+  --bg-primary: #{$neutral-900};       // Main background
+  --bg-secondary: #{$neutral-800};     // Card backgrounds
+  --bg-tertiary: #{$neutral-700};      // Subtle backgrounds
+  --bg-accent: #{$primary-color};      // Accent backgrounds
+
+  // Text Colors
+  --text-primary: #{$neutral-50};      // Main text
+  --text-secondary: #{$neutral-300};   // Secondary text
+  --text-tertiary: #{$neutral-400};    // Muted text
+  --text-accent: #3b82f6;              // Hellere Version für Dark Mode
+  --text-on-accent: #{$neutral-900};   // Text on accent background
+
+  // Heading Colors
+  --heading-primary: #{$neutral-50};
+  --heading-secondary: #{$neutral-100};
+  --heading-tertiary: #{$neutral-200};
+
+  // Border Colors
+  --border-primary: #{$neutral-700};
+  --border-secondary: #{$neutral-600};
+  --border-accent: #3b82f6;            // Hellere Version für Dark Mode
+
+  // Interactive Colors
+  --interactive-primary: #3b82f6;      // Hellere Version für Dark Mode
+  --interactive-primary-hover: #60a5fa; // Noch hellere Version
+  --interactive-secondary: #{$neutral-300};
+  --interactive-secondary-hover: #{$neutral-200};
+
+  // Status Colors
+  --status-success: #10b981;           // Hellere Versionen für Dark Mode
+  --status-warning: #f59e0b;
+  --status-error: #ef4444;
+
+  // Shadows
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+// ===== GLOBAL THEME CLASSES =====
+.theme-transition {
+  transition: background-color $transition-normal,
+  color $transition-normal,
+  border-color $transition-normal;
+}
+
+// Typography Classes mit Theme Support
+.text-primary {
+  color: var(--text-primary);
+  font-family: $font-family-primary;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+  font-family: $font-family-primary;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+}
+
+.text-muted {
+  color: var(--text-tertiary);
+  font-family: $font-family-primary;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+}
+
+// Heading Classes
+.heading-primary {
+  color: var(--heading-primary);
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+}
+
+.heading-secondary {
+  color: var(--heading-secondary);
+  font-family: $font-family-heading;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+}
+
+.heading-tertiary {
+  color: var(--heading-tertiary);
+  font-family: $font-family-heading;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-normal;
+}
