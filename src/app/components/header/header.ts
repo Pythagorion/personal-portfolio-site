@@ -61,20 +61,17 @@ export class HeaderComponent implements OnInit {
       {
         id: 'intro',
         label: this.currentLanguage === 'de' ? 'Intro' : 'Intro',
-        target: '#intro-section',
-        icon: '👋'
+        target: '#intro-section'
       },
       {
         id: 'projects',
         label: this.currentLanguage === 'de' ? 'Projekte' : 'Projects',
-        target: '#projects-section',
-        icon: '💻'
+        target: '#projects-section'
       },
       {
         id: 'cv',
         label: this.currentLanguage === 'de' ? 'Lebenslauf' : 'CV',
-        target: '#cv-section',
-        icon: '📄'
+        target: '#cv-section'
       }
     ];
   }

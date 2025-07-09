@@ -20,7 +20,7 @@ export class CvSectionComponent {
   timelineSections: TimelineSection[] = [
     {
       title: 'Ausbildung',
-      icon: '🎓',
+      icon: '',
       color: '#2563eb',
       entries: [
         {
@@ -68,7 +68,7 @@ export class CvSectionComponent {
     },
     {
       title: 'Berufslaufbahn',
-      icon: '💼',
+      icon: '',
       color: '#059669',
       entries: [
         {

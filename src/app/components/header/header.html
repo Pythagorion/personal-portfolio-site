@@ -36,7 +36,6 @@
             target="_blank"
             class="nav-link external-link"
             title="GitHub Profile">
-            <span class="nav-icon">🔗</span>
             <span class="nav-label">GitHub</span>
           </a>
         </li>
@@ -52,7 +51,6 @@
           class="control-button language-switch"
           (click)="toggleLanguage()"
           [title]="currentLanguage === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'">
-          <span class="control-icon">🌍</span>
           <span class="control-label">{{ currentLanguage.toUpperCase() }}</span>
         </button>
       </div>
@@ -63,7 +61,6 @@
           class="control-button theme-switch"
           (click)="toggleTheme()"
           [title]="headerSettings.isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
-          <span class="control-icon">{{ headerSettings.isDarkMode ? '☀️' : '🌙' }}</span>
           <span class="control-label">{{ headerSettings.isDarkMode ? 'Light' : 'Dark' }}</span>
         </button>
       </div>
@@ -75,7 +72,6 @@
           (click)="toggleSticky()"
           [class.active]="headerSettings.isSticky"
           [title]="headerSettings.isSticky ? 'Header lösen' : 'Header anheften'">
-          <span class="control-icon">{{ headerSettings.isSticky ? '📌' : '📍' }}</span>
           <span class="control-label">{{ headerSettings.isSticky ? 'Fixed' : 'Scroll' }}</span>
         </button>
       </div>
