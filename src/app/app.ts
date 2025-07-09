@@ -63,13 +63,13 @@ export class App {
       title: 'Game-Releases über Ort & Zeit',
       description: 'Im Rahmen eines Visualisierungsprojekts sollten wir eine auf D3 basierte Webanwendung realisieren. In meinem Projekt habe ich tausende Videospiel-Releases über einen Zeitraum von etwa 40 Jahren visualisiert. Die Anwendung ermöglicht es die numerische Verteilung auf einem Zeitstrahl zu betrachten, sowie die Herkunft der Entwickler auf einer Weltekarte zu sehen. Die Daten werden aus einer lokalen CSV-Datei geladen, welche wiederum aus der VGChartz.com Database gescraped wurde.',
       shortDescription: 'Visualisierungsprojekt zu Videospielen.',
-      imageUrl: 'assets/images/projects/ecommerce-splash.jpg',
+      imageUrl: 'https://i.ibb.co/whY8KH3t/visualisierung-Game-releases.png',
       technologies: ['D3', 'TypeScript', 'JavaScript','HTML', 'SCSS', 'Figma'],
       githubUrl: 'https://github.com/Uni-Projects-PH/visualization-project-game-releases',
-      liveUrl: 'https://ecommerce-demo.netlify.app',
-      isDeployed: true,
+      isDeployed: false,
       projectType : 'web',
-      collaborationType: 'solo'
+      collaborationType: 'solo',
+      deploymentNote: 'Die Anwendung basiert grundlegend auf der kostenpflichtigen Google Geocode API. Aus Budgetgründen wurde der Key nach Projektende deaktiviert. Weitere Informationen sind in der README des hinterlegten GitHub Repositories zu finden.'
     },
     {
       id: '4',
@@ -89,10 +89,10 @@ export class App {
       title: 'Ich habs richtig, aber ich habs falsch - Quiz',
       description: 'Bei diesem Quiz-Format handelt es sich um ein Quiz, das von der Content-Creator-Truppe PietSmiet stammt. Die Spielidee ist daher nicht meine eigene, aber die Umsetzung als Webseite ist von mir. Das Quiz besteht aus verschiedenen Kategorien, die einem thematischen Schwerpunkt zugeordnet werden. Jeder Kategorie werden Wertigkeiten (in Form von Punkten) zugeordnet. Ein Spieler sucht sich eine Kategorie und Wertigkeit aus und hat dann ein bestimmetes Zeitlimit möglichst viele Fragen FALSCH zu beantworten. Und das ist der Twist: Die Fragen sind recht einfach, müssen aber falsch beantwortet werden, um Punkte zu erhalten. Werden die Fragen richtig beantwortet, gibt es Minuspunkte. Dieses Projekt ist eines meiner ersten und das erste mit Vue. Die Fragen werden nicht in die Webseite eingepflegt und die Webseite selbst ist nur lokal und für die Punkteverrechnung zuständig.',
       shortDescription: 'Ein einfaches Quizformat, bei dem Spieler Fragen falsch beantworten müssen.',
-      imageUrl: 'assets/images/projects/ecommerce-splash.jpg',
+      imageUrl: 'https://i.ibb.co/RpQrtrpc/rightnwrong-img.png',
       technologies: ['TypeScript', 'Vue.js', 'HTML', 'SCSS', 'Figma'],
       githubUrl: 'https://github.com/Uni-Projects-PH/right-n-wrong',
-      liveUrl: 'https://ecommerce-demo.netlify.app',
+      liveUrl: 'https://uni-projects-ph.github.io/right-n-wrong/#/',
       isDeployed: true,
       projectType : 'web',
       collaborationType: 'solo'
