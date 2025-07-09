@@ -104,11 +104,6 @@
   border: 1px solid var(--border-primary);
   transition: all 0.3s ease-in-out;
 }
-.skill-category:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border-color: var(--border-accent);
-}
 
 .category-title {
   display: flex;
@@ -138,11 +133,6 @@
   font-weight: 500;
   border: 1px solid var(--border-secondary);
   transition: all 0.15s ease-in-out;
-}
-.skill-item:hover {
-  background-color: var(--interactive-primary);
-  color: var(--text-on-accent);
-  transform: translateY(-1px);
 }
 
 /*# sourceMappingURL=cv-section.css.map */

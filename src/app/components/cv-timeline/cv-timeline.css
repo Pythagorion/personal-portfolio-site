@@ -204,25 +204,6 @@
   font-style: italic;
 }
 
-.connection-line {
-  position: absolute;
-  top: 50%;
-  right: -0.75rem;
-  width: 1.5rem;
-  height: 2px;
-  z-index: 1;
-}
-@media (max-width: 768px) {
-  .connection-line {
-    top: auto;
-    bottom: -0.5rem;
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%) rotate(90deg);
-    width: 1rem;
-  }
-}
-
 @keyframes expandIn {
   from {
     opacity: 0;

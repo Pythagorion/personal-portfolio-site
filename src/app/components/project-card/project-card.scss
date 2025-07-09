@@ -164,12 +164,6 @@
     font-weight: 500;
     border: 1px solid var(--border-secondary);
     transition: all 0.15s ease-in-out;
-
-    &:hover {
-      background-color: var(--interactive-primary);
-      color: var(--text-on-accent);
-      transform: translateY(-1px);
-    }
   }
 }
 
