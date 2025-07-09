@@ -3,20 +3,22 @@
   border-bottom: 1px solid var(--border-primary);
   transition: all 0.3s ease-in-out;
   z-index: 1000;
+  margin: 0;
+  padding: 0;
 }
 .main-header.sticky {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  backdrop-filter: blur(10px);
-  background-color: rgba(var(--bg-secondary-rgb), 0.9);
+  margin: 0;
+  padding: 0;
 }
 .main-header.scrolled {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 .main-header.scrolled.sticky {
-  background-color: rgba(var(--bg-secondary-rgb), 0.95);
+  background-color: var(--bg-secondary);
 }
 
 .header-container {

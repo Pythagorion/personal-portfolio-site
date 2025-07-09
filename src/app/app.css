@@ -2,7 +2,6 @@
   min-height: 100vh;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  padding: 2rem;
 }
 
 .section-divider {

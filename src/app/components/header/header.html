@@ -7,8 +7,8 @@
 
     <!-- Logo/Brand -->
     <div class="header-brand">
-      <h1 class="brand-title">{{ currentLanguage === 'de' ? 'Portfolio' : 'Portfolio' }}</h1>
-      <span class="brand-subtitle">{{ currentLanguage === 'de' ? 'Medieninformatiker' : 'Media Computer Scientist' }}</span>
+      <h1 class="brand-title">Portfolio - Paul Hufnagel</h1>
+      <span class="brand-subtitle">Medieninformatiker</span>
     </div>
 
     <!-- Navigation -->
@@ -32,10 +32,10 @@
         <!-- GitHub Link -->
         <li class="nav-item">
           <a
-            href="https://github.com/username"
+            href="https://github.com/Pythagorion"
             target="_blank"
             class="nav-link external-link"
-            title="GitHub Profile">
+            title="GitHub-Profil">
             <span class="nav-label">GitHub</span>
           </a>
         </li>
@@ -44,16 +44,6 @@
 
     <!-- Controls -->
     <div class="header-controls">
-
-      <!-- Language Switch -->
-      <div class="control-group">
-        <button
-          class="control-button language-switch"
-          (click)="toggleLanguage()"
-          [title]="currentLanguage === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'">
-          <span class="control-label">{{ currentLanguage.toUpperCase() }}</span>
-        </button>
-      </div>
 
       <!-- Theme Switch -->
       <div class="control-group">
@@ -72,7 +62,7 @@
           (click)="toggleSticky()"
           [class.active]="headerSettings.isSticky"
           [title]="headerSettings.isSticky ? 'Header lösen' : 'Header anheften'">
-          <span class="control-label">{{ headerSettings.isSticky ? 'Fixed' : 'Scroll' }}</span>
+          <span class="control-label">{{ headerSettings.isSticky ? 'Fixiert' : 'Scrollend' }}</span>
         </button>
       </div>
 

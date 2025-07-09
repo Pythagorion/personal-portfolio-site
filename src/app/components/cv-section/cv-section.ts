@@ -150,13 +150,13 @@ export class CvSectionComponent {
         },
         {
           id: 'future',
-          company: 'Neue Herausforderungen und spannende Projekten',
+          company: '',
           position: 'Vielleicht bei Ihnen?',
           startDate: '?',
           endDate: 'Zukunft',
           description: [],
           type: 'future',
-          shortTitle: 'Neue Möglichkeiten'
+          shortTitle: ''
         }
       ]
     }
