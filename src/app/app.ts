@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import {Intro} from './components/intro/intro';
 import {ProjectGridComponent} from './components/project-grid/project-grid';
 import {CvSectionComponent} from './components/cv-section/cv-section';
+import {HeaderComponent} from './components/header/header';
 
 export interface Project {
   id: string;
@@ -21,7 +22,7 @@ export interface Project {
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Intro, ProjectGridComponent, CvSectionComponent],
+  imports: [RouterOutlet, Intro, ProjectGridComponent, CvSectionComponent, HeaderComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -118,8 +119,18 @@ export class App {
     document.documentElement.setAttribute('data-theme', this.currentTheme);
   }
 
-  toggleTheme() {
-    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', this.currentTheme);
+  onThemeToggle(theme: 'light' | 'dark'): void {
+    this.currentTheme = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+
+  onLanguageToggle(language: 'de' | 'en'): void {
+    // Hier später I18n-Integration
+    console.log('Language switched to:', language);
+  }
+
+  onStickyToggle(isSticky: boolean): void {
+    // Header-Sticky-State wird automatisch gehandhabt
+    console.log('Sticky mode:', isSticky);
   }
 }

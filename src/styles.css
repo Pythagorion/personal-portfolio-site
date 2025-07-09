@@ -1,4 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+[data-theme=light] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-tertiary: #e2e8f0;
+  --bg-accent: #2563eb;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-tertiary: #64748b;
+  --text-accent: #2563eb;
+  --text-on-accent: #f8fafc;
+  --heading-primary: #0f172a;
+  --heading-secondary: #1e293b;
+  --heading-tertiary: #334155;
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5e1;
+  --border-accent: #2563eb;
+  --interactive-primary: #2563eb;
+  --interactive-primary-hover: #1d4ed8;
+  --interactive-secondary: #475569;
+  --interactive-secondary-hover: #334155;
+  --status-success: #059669;
+  --status-warning: #d97706;
+  --status-error: #dc2626;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme=dark] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-accent: #2563eb;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-accent: #3b82f6;
+  --text-on-accent: #0f172a;
+  --heading-primary: #f8fafc;
+  --heading-secondary: #f1f5f9;
+  --heading-tertiary: #e2e8f0;
+  --border-primary: #334155;
+  --border-secondary: #475569;
+  --border-accent: #3b82f6;
+  --interactive-primary: #3b82f6;
+  --interactive-primary-hover: #60a5fa;
+  --interactive-secondary: #cbd5e1;
+  --interactive-secondary-hover: #e2e8f0;
+  --status-success: #10b981;
+  --status-warning: #f59e0b;
+  --status-error: #ef4444;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+.theme-transition {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.text-primary {
+  color: var(--text-primary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-muted {
+  color: var(--text-tertiary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.heading-primary {
+  color: var(--heading-primary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.heading-secondary {
+  color: var(--heading-secondary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.heading-tertiary {
+  color: var(--heading-tertiary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
 @font-face {
   font-family: "Roboto Slab";
   src: url("./app/fonts/RobotoSlab-Regular.ttf") format("truetype");
@@ -8,6 +105,37 @@
 :root {
   font-family: "Roboto Slab", sans-serif;
   background: #e7e7e7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html:not([data-theme]) {
+  --bg-primary: #f8fafc;
+  --text-primary: #0f172a;
+  --bg-secondary: #f1f5f9;
+  --border-primary: #e2e8f0;
+  --interactive-primary: #2563eb;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -4,11 +4,23 @@
 
 <main class="main">
   <div class="app-container">
-    <app-intro></app-intro>
+    <app-header
+      (themeToggle)="onThemeToggle($event)"
+      (languageToggle)="onLanguageToggle($event)"
+      (stickyToggle)="onStickyToggle($event)">
+    </app-header>
+
+    <section id="intro-section" class="intro-section section-target">
+      <app-intro></app-intro>
+    </section>
     <div class="section-divider"></div>
-    <app-project-grid [projects]="projects"></app-project-grid>
+    <section id="projects-section" class="projects-section section-target">
+      <app-project-grid [projects]="projects"></app-project-grid>
+    </section>
     <div class="section-divider"></div>
-    <app-cv-section></app-cv-section>
+    <section id="cv-section" class="cv-section section-target">
+      <app-cv-section></app-cv-section>
+    </section>
 
   </div>
 </main>
