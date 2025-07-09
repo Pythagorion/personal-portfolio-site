@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {Intro} from './components/intro/intro';
 import {ProjectGridComponent} from './components/project-grid/project-grid';
+import {CvSectionComponent} from './components/cv-section/cv-section';
 
 export interface Project {
   id: string;
@@ -20,7 +21,7 @@ export interface Project {
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Intro, ProjectGridComponent],
+  imports: [RouterOutlet, Intro, ProjectGridComponent, CvSectionComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -106,9 +107,10 @@ export class App {
       technologies: ['TypeScript', 'Angular', 'HTML', 'SCSS', 'Figma'],
       githubUrl: 'https://github.com/username/ecommerce-dashboard',
       liveUrl: 'https://ecommerce-demo.netlify.app',
-      isDeployed: true,
+      isDeployed: false,
       projectType : 'web',
-      collaborationType: 'solo'
+      collaborationType: 'solo',
+      deploymentNote: 'Da es sich bei diesem Projekt, um diese Seite hier handelt, gibt es keinen externen Link.'
     }
   ];
 

@@ -1,16 +1,14 @@
-
 .app-container {
   min-height: 100vh;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  padding: 2rem; // Damit du was siehst
+  padding: 2rem;
 }
 
-
 .section-divider {
-  // Seichter Trennstrich
   width: 100%;
   height: 1rem;
   background-color: coral;
-
 }
+
+/*# sourceMappingURL=app.css.map */

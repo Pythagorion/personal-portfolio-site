@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-  font-family: 'Roboto Slab';
+  font-family: "Roboto Slab";
   src: url("./app/fonts/RobotoSlab-Regular.ttf") format("truetype");
   font-style: normal;
   font-display: swap;
 }
-
 :root {
   font-family: "Roboto Slab", sans-serif;
   background: #e7e7e7;
 }
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,99 @@
+<div class="timeline-container">
+
+  @for (section of timelineSections; track section.title) {
+    <div class="timeline-section">
+
+      <!-- Section Header -->
+      <div class="section-header">
+        <span class="section-icon">{{ section.icon }}</span>
+        <h3 class="section-title">{{ section.title }}</h3>
+      </div>
+
+      <!-- Timeline Line -->
+      <div class="timeline-line" [style.--section-color]="section.color">
+
+        <!-- Timeline Entries -->
+        @for (entry of section.entries; track entry.id) {
+          <div
+            class="timeline-entry"
+            [class.expanded]="expandedEntryId === entry.id"
+            [class.future-entry]="entry.type === 'future'"
+            (click)="toggleEntry(entry.id)"
+            (mouseenter)="onHover(entry.id, true)"
+            (mouseleave)="onHover(entry.id, false)">
+
+            <!-- Timeline Dot -->
+            <div class="timeline-dot" [style.background-color]="section.color">
+              @if (entry.type === 'future') {
+                <span class="dot-icon">❓</span>
+              } @else {
+                <span class="dot-icon">●</span>
+              }
+            </div>
+
+            <!-- Entry Content -->
+            <div class="entry-content">
+
+              <!-- Compact View -->
+              <div class="compact-view">
+                <div class="entry-header">
+                  <h4 class="company-name">{{ entry.company }}</h4>
+                  <span class="date-range">{{ formatDateRange(entry.startDate, entry.endDate) }}</span>
+                </div>
+
+                @if (entry.shortTitle) {
+                  <p class="short-title">{{ entry.shortTitle }}</p>
+                }
+              </div>
+
+              <!-- Expanded View -->
+              @if (expandedEntryId === entry.id || hoveredEntryId === entry.id) {
+                <div class="expanded-view">
+                  <div class="position-title">{{ entry.position }}</div>
+
+                  @if (entry.location) {
+                    <div class="location">📍 {{ entry.location }}</div>
+                  }
+
+                  @if (entry.description.length > 0) {
+                    <ul class="description-list">
+                      @for (desc of entry.description; track desc) {
+                        <li>{{ desc }}</li>
+                      }
+                    </ul>
+                  }
+
+                  @if (entry.technologies && entry.technologies.length > 0) {
+                    <div class="tech-stack">
+                      <span class="tech-label">Technologien:</span>
+                      <div class="tech-tags">
+                        @for (tech of entry.technologies; track tech) {
+                          <span class="tech-tag">{{ tech }}</span>
+                        }
+                      </div>
+                    </div>
+                  }
+                </div>
+              }
+
+              <!-- Special Future Entry Content -->
+              @if (entry.type === 'future') {
+                <div class="future-content">
+                  <div class="future-message">{{ entry.position }}</div>
+                  <div class="future-subtitle">{{ entry.company }}</div>
+                </div>
+              }
+            </div>
+
+            <!-- Connection Line to Next Entry -->
+            @if (!$last) {
+              <div class="connection-line" [style.background-color]="section.color"></div>
+            }
+          </div>
+        }
+
+      </div>
+    </div>
+  }
+
+</div>

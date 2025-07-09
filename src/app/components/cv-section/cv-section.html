@@ -1,0 +1,38 @@
+<section class="cv-section">
+  <div class="cv-container">
+
+    <!-- Section Header -->
+    <header class="cv-header">
+      <h2 class="section-title">Mein Werdegang</h2>
+      <p class="section-subtitle">
+        Ein interaktiver Überblick über meine Ausbildung und Berufserfahrung
+      </p>
+    </header>
+
+    <!-- Interactive Timeline -->
+    <app-cv-timeline [timelineSections]="timelineSections"></app-cv-timeline>
+
+    <!-- Skills Section -->
+    <div class="skills-section">
+      <h3 class="skills-title">Kompetenzen</h3>
+      <div class="skills-grid">
+
+        @for (skillCategory of skillCategories; track skillCategory.title) {
+          <div class="skill-category">
+            <h4 class="category-title">
+              <span class="category-icon">{{ skillCategory.icon }}</span>
+              {{ skillCategory.title }}
+            </h4>
+            <div class="skill-items">
+              @for (skill of skillCategory.skills; track skill) {
+                <span class="skill-item">{{ skill }}</span>
+              }
+            </div>
+          </div>
+        }
+
+      </div>
+    </div>
+
+  </div>
+</section>
