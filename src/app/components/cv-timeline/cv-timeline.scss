@@ -1,9 +1,11 @@
+// Main container for the timeline
 .timeline-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 0;
 }
 
+// section for the timeline entries
 .timeline-section {
   margin-bottom: 4rem;
 
@@ -116,6 +118,7 @@
   }
 }
 
+// Compact and Expanded Views with their corresponding styles
 .compact-view {
   .entry-header {
     display: flex;
@@ -229,8 +232,6 @@
     font-style: italic;
   }
 }
-
-// Entferne die alten connection-line Styles komplett
 
 // Animations
 @keyframes expandIn {

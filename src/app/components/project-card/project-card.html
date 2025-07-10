@@ -5,7 +5,7 @@
   (mouseenter)="onHover(true)"
   (mouseleave)="onHover(false)">
 
-  <!-- Header Image mit Titel Overlay -->
+  <!-- Header with preview picture and short text -->
   <div class="card-header">
     <div class="header-image" [style.background-image]="'url(' + project.imageUrl + ')'">
       <div class="image-overlay" [class.blurred]="!isExpanded && !isHovering"></div>
@@ -15,10 +15,10 @@
     </div>
   </div>
 
-  <!-- Beschreibungsbereich -->
+  <!-- Description area -->
   <div class="card-content">
 
-    <!-- Beschreibungstext -->
+    <!-- Description text -->
     <div class="description-section">
       <p class="project-description" [class.truncated]="!isExpanded">
         {{ isExpanded ? project.description : project.shortDescription }}
@@ -46,7 +46,7 @@
         Repository
       </a>
 
-      <!-- Live Demo Link (wenn deployed) -->
+      <!-- Live Demo Link (when deployed) -->
       @if (project.isDeployed && project.liveUrl) {
         <a
           [href]="project.liveUrl"
@@ -58,7 +58,7 @@
         </a>
       }
 
-      <!-- Deployment Status (wenn nicht deployed) -->
+      <!-- Deployment Status (when not deployed) -->
       @if (!project.isDeployed) {
         <div
           class="deployment-status"

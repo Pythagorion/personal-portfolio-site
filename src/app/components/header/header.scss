@@ -1,3 +1,4 @@
+// Main class for the header component
 .main-header {
   background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-primary);
@@ -24,6 +25,7 @@
   }
 }
 
+// Container for the header content
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -185,6 +187,7 @@
   }
 }
 
+// Mobile Menu Styles
 .mobile-menu-toggle {
   display: none;
   flex-direction: column;

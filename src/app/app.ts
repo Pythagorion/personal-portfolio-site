@@ -5,6 +5,7 @@ import {ProjectGridComponent} from './components/project-grid/project-grid';
 import {CvSectionComponent} from './components/cv-section/cv-section';
 import {HeaderComponent} from './components/header/header';
 
+// Interface representing a project entry for the portfolio
 export interface Project {
   id: string;
   title: string;
@@ -20,6 +21,7 @@ export interface Project {
   deploymentNote?: string;
 }
 
+// Main application component for the portfolio site
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Intro, ProjectGridComponent, CvSectionComponent, HeaderComponent],
@@ -31,6 +33,7 @@ export class App {
 
   currentTheme: 'light' | 'dark' = 'light';
 
+  // List of projects to be displayed in the portfolio
   projects: Project[] = [
     {
       id: '1',
@@ -112,20 +115,33 @@ export class App {
     }
   ];
 
+  // Set initial theme on application start
   constructor() {
     document.documentElement.setAttribute('data-theme', this.currentTheme);
   }
 
+  /**
+   * Switches the application theme.
+   * @param theme The new theme ('light' or 'dark')
+   */
   onThemeToggle(theme: 'light' | 'dark'): void {
     this.currentTheme = theme;
     document.documentElement.setAttribute('data-theme', theme);
   }
 
+  /**
+   * Placeholder for language switching (i18n integration planned).
+   * @param language The new language ('de' or 'en')
+   */
   onLanguageToggle(language: 'de' | 'en'): void {
     // Hier später I18n-Integration
     console.log('Language switched to:', language);
   }
 
+  /**
+   * Handles sticky header state changes.
+   * @param isSticky Whether the header is sticky
+   */
   onStickyToggle(isSticky: boolean): void {
     // Header-Sticky-State wird automatisch gehandhabt
     console.log('Sticky mode:', isSticky);

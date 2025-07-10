@@ -1,6 +1,6 @@
-// project-card.ts
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
+// Project interface definition
 export interface Project {
   id: string;
   title: string;
@@ -22,21 +22,38 @@ export interface Project {
   styleUrls: ['./project-card.scss']      // ← Ohne .component
 })
 export class ProjectCardComponent {
+  // Inputs and Outputs for the component
   @Input() project!: Project;
   @Input() isExpanded: boolean = false;
 
   @Output() expandToggle = new EventEmitter<string>();
 
+  // Internal state for hover effect
   isHovering: boolean = false;
 
+  /**
+   * Toggle the expanded state of the project card.
+   * This will emit the project ID to the parent component
+   * to handle the expansion logic.
+   */
   toggleExpanded(): void {
     this.expandToggle.emit(this.project.id);
   }
 
+  /**
+   * Handle mouse hover events to change the hover state.
+   * This can be used to apply styles or effects when the card is hovered.
+   * @param isHovering - True if the card is hovered, false otherwise.
+   */
   onHover(isHovering: boolean): void {
     this.isHovering = isHovering;
   }
 
+  /**
+   * Get the status icon based on the project type.
+   * This method returns a string representing an emoji icon
+   * that corresponds to the type of project.
+   */
   getStatusIcon(): string {
     switch (this.project.projectType) {
       case 'desktop':
@@ -52,6 +69,11 @@ export class ProjectCardComponent {
     }
   }
 
+  /**
+   * Get the status text for the project.
+   * This method returns a string that describes the project
+   * based on its type and collaboration mode.
+   */
   getStatusText(): string {
     if (this.project.deploymentNote) {
       return this.project.deploymentNote;
@@ -73,6 +95,11 @@ export class ProjectCardComponent {
     }
   }
 
+  /**
+   * Get the deployment tooltip text based on the project collaboration type.
+   * This method returns a string that provides additional context
+   * about the project's deployment status.
+   */
   getDeploymentTooltip(): string {
     const baseTooltip = this.getStatusText();
 

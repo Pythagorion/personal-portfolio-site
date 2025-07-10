@@ -12,12 +12,24 @@ export class Intro implements OnInit {
   ngOnInit(): void {
     this.updateGreeting();
 
-    // Optional: Greeting alle 30 Minuten aktualisieren
+    /**
+     * Set an interval to update the greeting every 30 minutes.
+     * This ensures that the greeting is always current
+     * and reflects the time of day.
+     */
     setInterval(() => {
       this.updateGreeting();
-    }, 30 * 60 * 1000); // 30 Minuten
+    }, 30 * 60 * 1000);
   }
 
+  /**
+   * Updates the greeting based on the current time of day.
+   * The greeting changes according to the following schedule:
+   * - Morning: 5:00 AM to 11:59 AM
+   * - Afternoon: 12:00 PM to 5:59 PM
+   * - Evening: 6:00 PM to 9:59 PM
+   * - Night: 10:00 PM to 4:59 AM
+   */
   private updateGreeting(): void {
     const currentHour = new Date().getHours();
 

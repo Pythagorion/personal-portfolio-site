@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {CvTimelineComponent, TimelineSection} from '../cv-timeline/cv-timeline';
 import {CommonModule} from '@angular/common';
 
+// Define the structure for skill categories and their skills
 interface SkillCategory {
   title: string;
   icon: string;
@@ -17,6 +18,7 @@ interface SkillCategory {
 })
 export class CvSectionComponent {
 
+  // Defines the timeline sections with their entries
   timelineSections: TimelineSection[] = [
     {
       title: 'Ausbildung',
@@ -162,6 +164,7 @@ export class CvSectionComponent {
     }
   ];
 
+  // Defines the skill categories with their respective skills
   skillCategories: SkillCategory[] = [
     {
       title: 'Frontend-Entwicklung',

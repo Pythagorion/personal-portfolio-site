@@ -1,13 +1,12 @@
-
+//the main stylesheet for the app
 .app-container {
   min-height: 100vh;
   background-color: var(--bg-primary);
   color: var(--text-primary);
 }
 
-
+// a divider to separate sections
 .section-divider {
-  // Seichter Trennstrich
   width: 50%;
   display: block;
   margin: 2rem auto;
