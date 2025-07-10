@@ -61,8 +61,8 @@
           class="control-button sticky-toggle"
           (click)="toggleSticky()"
           [class.active]="headerSettings.isSticky"
-          [title]="headerSettings.isSticky ? 'Header lösen' : 'Header anheften'">
-          <span class="control-label">{{ headerSettings.isSticky ? 'Fixiert' : 'Scrollend' }}</span>
+          [title]="headerSettings.isSticky ? 'Header fixieren' : 'Header mitscrollen lassen'">
+          <span class="control-label">{{ headerSettings.isSticky ? 'Scrollend' : 'Fixiert' }}</span>
         </button>
       </div>
 
