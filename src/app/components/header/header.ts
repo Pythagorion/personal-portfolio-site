@@ -45,6 +45,9 @@ export class HeaderComponent implements OnInit {
     this.updateNavigationItems();
     this.loadSettings();
     this.detectActiveSection();
+
+    const theme = this.headerSettings.isDarkMode ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', theme);
   }
 
   // Listen to scroll and resize events to update the header state
@@ -102,6 +105,7 @@ export class HeaderComponent implements OnInit {
   toggleTheme(): void {
     this.headerSettings.isDarkMode = !this.headerSettings.isDarkMode;
     const newTheme = this.headerSettings.isDarkMode ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
     this.themeToggle.emit(newTheme);
     this.saveSettings();
   }
