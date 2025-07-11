@@ -61,9 +61,9 @@
       </p>
     </div>
 
-    <!-- Tech Stack -->
-    @if (shouldShowDetails) {
+    @if (shouldShowExpandedDetails()) {
       <div class="expanded-details">
+
         <!-- Tech Stack -->
         <div class="tech-stack">
           <h4 class="tech-title">Technologien:</h4>
@@ -76,13 +76,21 @@
 
         <!-- Links -->
         <div class="project-links">
-          <a [href]="project.githubUrl" target="_blank" class="project-link github-link" (click)="$event.stopPropagation()">
+          <a
+            [href]="project.githubUrl"
+            target="_blank"
+            class="project-link github-link"
+            (click)="$event.stopPropagation()">
             <span class="link-icon">📁</span>
             Repository
           </a>
 
           @if (project.isDeployed && project.liveUrl) {
-            <a [href]="project.liveUrl" target="_blank" class="project-link live-link" (click)="$event.stopPropagation()">
+            <a
+              [href]="project.liveUrl"
+              target="_blank"
+              class="project-link live-link"
+              (click)="$event.stopPropagation()">
               <span class="link-icon">🚀</span>
               Live Demo
             </a>

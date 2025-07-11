@@ -42,11 +42,33 @@ export class ProjectCardComponent implements  OnDestroy {
 
   isFullyExpanded: boolean = false;
 
+  /**
+   * Determine if the project card should show expanded details.
+   * This method checks if the card is expanded, if the progress bar
+   * is shown, or if the card is hovered and not in debounce time.
+   * @return {boolean} - True if details should be shown, false otherwise.
+   */
+  shouldShowExpandedDetails(): boolean {
+    return this.isExpanded ||
+      this.showProgressBar ||
+      (this.isHovering && !this.isInDebounceTime());
+  }
+
+  /**
+   * Check if the project card is currently in the debounce time.
+   * This method checks if the time since the last closed state
+   * is less than the debounce time.
+   * @return {boolean} - True if within debounce time, false otherwise.
+   */
   isInDebounceTime(): boolean {
     const timeSinceLastClosed = Date.now() - this.lastClosedTime;
     return timeSinceLastClosed < this.debounceTimeMs;
   }
 
+  /**
+   * Clean up resources when the component is destroyed.
+   * This will clear any hover timers and complete the destroy subject.
+   */
   ngOnDestroy(): void {
     if (this.hoverTimer) {
       clearTimeout(this.hoverTimer);

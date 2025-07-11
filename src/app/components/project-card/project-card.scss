@@ -223,15 +223,10 @@
 }
 
 .tech-stack {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
+  opacity: 1;
+  max-height: none;
   transition: all 0.3s ease-in-out;
-
-  &.visible {
-    opacity: 1;
-    max-height: 200px;
-  }
+  margin-bottom: 0.5rem;
 
   .tech-title {
     font-size: 0.875rem;
@@ -261,17 +256,12 @@
 }
 
 .project-links {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
+  opacity: 1;
+  max-height: none;
   transition: all 0.3s ease-in-out;
   display: flex;
   gap: 1rem;
-
-  &.visible {
-    opacity: 1;
-    max-height: 100px;
-  }
+  margin: 0 0.5rem 0.5rem 0;
 
   .project-link {
     display: flex;

@@ -59,14 +59,14 @@ export class CvTimelineComponent {
       return;
     }
 
-    // Nicht starten wenn bereits expanded
+    // If the entry is already expanded, do not show the progress bar
     if (this.expandedEntryId === entryId) {
       console.log('*** Timeline entry already expanded:', entryId);
       this.showProgressBars.set(entryId, false);
       return;
     }
 
-    // Progress Bar anzeigen
+    // Start the timer to show the progress bar
     this.showProgressBars.set(entryId, true);
     console.log('*** Timeline timer started for:', entryId);
 
@@ -79,7 +79,11 @@ export class CvTimelineComponent {
     this.hoverTimers.set(entryId, timer);
   }
 
-  // *** NEU: Mouse Leave Handler ***
+  /**
+   * Handles mouse leave event for a timeline entry.
+   * This method hides the progress bar and clears any active hover timers.
+   * @param entryId
+   */
   onEntryMouseLeave(entryId: string): void {
     this.hoveredEntryId = null;
     this.showProgressBars.set(entryId, false);
@@ -92,26 +96,38 @@ export class CvTimelineComponent {
     }
   }
 
-  // *** NEU: Erweiterte Toggle Entry Methode ***
+  /**
+   * Toggles the expansion state of a timeline entry.
+   * If the entry is already expanded, it will be collapsed.
+   * If it is collapsed, it will be expanded.
+   * @param entryId - The ID of the entry to toggle.
+   */
   toggleEntry(entryId: string): void {
-    // Progress Bar verstecken beim Toggle
     this.showProgressBars.set(entryId, false);
 
-    // Timestamp setzen wenn Entry geschlossen wird
     if (this.expandedEntryId === entryId) {
       this.lastClosedTimes.set(entryId, Date.now());
       console.log('*** Timeline entry closed, debounce time set for:', entryId);
     }
 
-    // Original toggle logic
     this.expandedEntryId = this.expandedEntryId === entryId ? null : entryId;
   }
 
-  // *** NEU: Helper für Template ***
+  /**
+   * Checks if a timeline entry is currently expanded.
+   * @param entryId - The ID of the entry to check.
+   * @returns True if the entry is expanded, false otherwise.
+   */
   shouldShowProgressBar(entryId: string): boolean {
     return this.showProgressBars.get(entryId) || false;
   }
 
+  /**
+   * Checks if a timeline entry is in the debounce time.
+   * If the entry was closed within the last debounceTimeMs milliseconds, it returns true.
+   * @param entryId - The ID of the entry to check.
+   * @returns True if the entry is in debounce time, false otherwise.
+   */
   isInDebounceTime(entryId: string): boolean {
     const lastClosed = this.lastClosedTimes.get(entryId) || 0;
     const timeSinceLastClosed = Date.now() - lastClosed;
