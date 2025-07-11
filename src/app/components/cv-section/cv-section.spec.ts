@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CvSection } from './cv-section';
 
+
 describe('CvSection', () => {
   let component: CvSection;
   let fixture: ComponentFixture<CvSection>;

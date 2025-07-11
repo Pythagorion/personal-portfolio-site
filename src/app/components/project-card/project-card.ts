@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnDestroy} from '@angular/core';
+import { Subject } from 'rxjs';
 
 // Project interface definition
 export interface Project {
@@ -18,18 +19,92 @@ export interface Project {
 
 @Component({
   selector: 'app-project-card',
-  templateUrl: './project-card.html',     // ← Ohne .component
-  styleUrls: ['./project-card.scss']      // ← Ohne .component
+  templateUrl: './project-card.html',
+  styleUrls: ['./project-card.scss']
 })
-export class ProjectCardComponent {
+export class ProjectCardComponent implements  OnDestroy {
   // Inputs and Outputs for the component
   @Input() project!: Project;
   @Input() isExpanded: boolean = false;
 
   @Output() expandToggle = new EventEmitter<string>();
 
+  private destroy$ = new Subject<void>();
+
+  private hoverTimer: any = null;
+
+  private lastClosedTime: number = 0;
+  private debounceTimeMs: number = 5000
+
   // Internal state for hover effect
   isHovering: boolean = false;
+  showProgressBar: boolean = false;
+
+  isFullyExpanded: boolean = false;
+
+  isInDebounceTime(): boolean {
+    const timeSinceLastClosed = Date.now() - this.lastClosedTime;
+    return timeSinceLastClosed < this.debounceTimeMs;
+  }
+
+  ngOnDestroy(): void {
+    if (this.hoverTimer) {
+      clearTimeout(this.hoverTimer);
+    }
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  /**
+   * Handle mouse enter events on the project card.
+   * This will set the hover state and start a timer to expand the card
+   * after a delay if the mouse remains over the card.
+   */
+  onMouseEnter(): void {
+    this.isHovering = true;
+
+    const timeSinceLastClosed = Date.now() - this.lastClosedTime;
+    if (timeSinceLastClosed < this.debounceTimeMs) {
+      this.showProgressBar = false;
+      return;
+    }
+
+    if (this.isExpanded) {
+      this.showProgressBar = false;
+      return;
+    }
+
+    this.showProgressBar = true;
+
+    this.hoverTimer = setTimeout(() => {
+      this.isFullyExpanded = true;
+      this.showProgressBar = false;
+      this.expandToggle.emit(this.project.id);
+    }, 1000);
+  }
+
+  /**
+   * Handle mouse leave events on the project card.
+   * This will reset the hover state and clear any hover timers.
+   */
+  onMouseLeave(): void {
+    this.isHovering = false;
+
+    this.showProgressBar = false;
+
+    if (this.hoverTimer) {
+      clearTimeout(this.hoverTimer);
+      this.hoverTimer = null;
+    }
+  }
+
+  /**
+   * Determine if the project card should show details.
+   * This is true if the card is fully expanded or just expanded.
+   */
+  get shouldShowDetails(): boolean {
+    return this.isFullyExpanded || this.isExpanded;
+  }
 
   /**
    * Toggle the expanded state of the project card.
@@ -38,6 +113,12 @@ export class ProjectCardComponent {
    */
   toggleExpanded(): void {
     this.expandToggle.emit(this.project.id);
+
+    this.showProgressBar = false;
+
+    if (this.isExpanded) {
+      this.lastClosedTime = Date.now();
+    }
   }
 
   /**

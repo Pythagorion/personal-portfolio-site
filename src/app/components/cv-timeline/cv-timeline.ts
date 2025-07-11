@@ -42,13 +42,80 @@ export class CvTimelineComponent {
   expandedEntryId: string | null = null;
   hoveredEntryId: string | null = null;
 
-  /**
-   * Toggles the expansion of a timeline entry.
-   * If the entry is already expanded, it collapses it; otherwise, it expands the entry.
-   * @param entryId - The ID of the entry to toggle.
-   */
+  private hoverTimers: Map<string, any> = new Map();
+  private lastClosedTimes: Map<string, number> = new Map();
+  private showProgressBars: Map<string, boolean> = new Map();
+  private debounceTimeMs: number = 5000;
+
+  onEntryMouseEnter(entryId: string): void {
+    this.hoveredEntryId = entryId;
+
+    // Debounce Check
+    const lastClosed = this.lastClosedTimes.get(entryId) || 0;
+    const timeSinceLastClosed = Date.now() - lastClosed;
+    if (timeSinceLastClosed < this.debounceTimeMs) {
+      console.log('*** Timeline debounce active for:', entryId);
+      this.showProgressBars.set(entryId, false);
+      return;
+    }
+
+    // Nicht starten wenn bereits expanded
+    if (this.expandedEntryId === entryId) {
+      console.log('*** Timeline entry already expanded:', entryId);
+      this.showProgressBars.set(entryId, false);
+      return;
+    }
+
+    // Progress Bar anzeigen
+    this.showProgressBars.set(entryId, true);
+    console.log('*** Timeline timer started for:', entryId);
+
+    const timer = setTimeout(() => {
+      console.log('*** Timeline timer fired for:', entryId);
+      this.showProgressBars.set(entryId, false);
+      this.toggleEntry(entryId);
+    }, 1000);
+
+    this.hoverTimers.set(entryId, timer);
+  }
+
+  // *** NEU: Mouse Leave Handler ***
+  onEntryMouseLeave(entryId: string): void {
+    this.hoveredEntryId = null;
+    this.showProgressBars.set(entryId, false);
+
+    const timer = this.hoverTimers.get(entryId);
+    if (timer) {
+      clearTimeout(timer);
+      this.hoverTimers.delete(entryId);
+      console.log('*** Timeline timer cleared for:', entryId);
+    }
+  }
+
+  // *** NEU: Erweiterte Toggle Entry Methode ***
   toggleEntry(entryId: string): void {
+    // Progress Bar verstecken beim Toggle
+    this.showProgressBars.set(entryId, false);
+
+    // Timestamp setzen wenn Entry geschlossen wird
+    if (this.expandedEntryId === entryId) {
+      this.lastClosedTimes.set(entryId, Date.now());
+      console.log('*** Timeline entry closed, debounce time set for:', entryId);
+    }
+
+    // Original toggle logic
     this.expandedEntryId = this.expandedEntryId === entryId ? null : entryId;
+  }
+
+  // *** NEU: Helper für Template ***
+  shouldShowProgressBar(entryId: string): boolean {
+    return this.showProgressBars.get(entryId) || false;
+  }
+
+  isInDebounceTime(entryId: string): boolean {
+    const lastClosed = this.lastClosedTimes.get(entryId) || 0;
+    const timeSinceLastClosed = Date.now() - lastClosed;
+    return timeSinceLastClosed < this.debounceTimeMs;
   }
 
   /**

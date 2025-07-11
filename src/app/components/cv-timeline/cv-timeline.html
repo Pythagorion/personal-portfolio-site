@@ -19,8 +19,8 @@
             [class.expanded]="expandedEntryId === entry.id"
             [class.future-entry]="entry.type === 'future'"
             (click)="toggleEntry(entry.id)"
-            (mouseenter)="onHover(entry.id, true)"
-            (mouseleave)="onHover(entry.id, false)">
+            (mouseenter)="onEntryMouseEnter(entry.id)"
+            (mouseleave)="onEntryMouseLeave(entry.id)">
 
             <!-- Timeline Dot -->
             <div class="timeline-dot" [style.background-color]="section.color">
@@ -33,6 +33,30 @@
 
             <!-- Entry Content -->
             <div class="entry-content">
+
+              @if (shouldShowProgressBar(entry.id)) {
+                <div class="timeline-hover-progress">
+                  <div class="progress-ring">
+                    <svg width="30" height="30">
+                      <circle
+                        cx="15" cy="15" r="13"
+                        fill="none"
+                        stroke="rgba(255,255,255,0.3)"
+                        stroke-width="2"/>
+                      <circle
+                        cx="15" cy="15" r="13"
+                        fill="none"
+                        stroke="var(--text-accent)"
+                        stroke-width="2"
+                        stroke-dasharray="82"
+                        stroke-dashoffset="82"
+                        class="progress-circle"
+                        transform="rotate(-90 15 15)"/>
+                    </svg>
+                    <span class="progress-icon">🔍️</span>
+                  </div>
+                </div>
+              }
 
               <!-- Compact View -->
               <div class="compact-view">
@@ -83,10 +107,22 @@
                 </div>
               }
             </div>
-
           </div>
         }
+      </div>
 
+      <div class="debounce-messages">
+        @for (entry of section.entries; track entry.id) {
+          @if (hoveredEntryId === entry.id && expandedEntryId !== entry.id && !shouldShowProgressBar(entry.id) && isInDebounceTime(entry.id)) {
+            <div class="timeline-debounce-indicator">
+              <div class="debounce-message">
+                <span class="debounce-icon">⏳</span>
+                <span class="debounce-text">5 Sekunden Hover-Cooldown aktiviert</span>
+                <span class="debounce-hint">(Klicken funktioniert weiterhin)</span>
+              </div>
+            </div>
+          }
+        }
       </div>
     </div>
   }

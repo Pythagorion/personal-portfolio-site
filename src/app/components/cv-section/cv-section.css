@@ -122,6 +122,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
+  margin-top: 0.5rem;
 }
 
 .skill-item {

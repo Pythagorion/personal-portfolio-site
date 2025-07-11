@@ -46,7 +46,8 @@ export class CvSectionComponent {
           endDate: '2023',
           description: [
             'Schwerpunkt: Web Development',
-            'Bachelorarbeit im Bereich der Softwaremodellierung (UML; siehe JSipher-Projekt)'
+            'Bachelorarbeit im Bereich der Softwaremodellierung (UML; siehe JSipher-Projekt)',
+            'Abschlussnote: 1,75'
           ],
           type: 'education',
           location: 'Gummersbach',

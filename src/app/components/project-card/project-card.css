@@ -4,7 +4,7 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: min-height 0.3s ease-in-out;
   border: 1px solid var(--border-primary);
   position: relative;
   min-height: 22rem;
@@ -18,8 +18,93 @@
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   z-index: 10;
   border-color: var(--border-accent);
+  min-height: 28rem;
+}
+.project-card.preview {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.project-card.fixed {
+  border-color: var(--border-accent);
+  border-width: 2px;
 }
 
+.hover-progress {
+  position: absolute;
+  top: 85%;
+  left: 92%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+.hover-progress .progress-ring {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+.hover-progress .progress-ring .progress-circle {
+  animation: fillProgress 1s linear forwards;
+}
+.hover-progress .progress-ring .progress-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+}
+
+@keyframes fillProgress {
+  from {
+    stroke-dashoffset: 113;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.expanded-details {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.debounce-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+.debounce-indicator .debounce-message {
+  display: flex;
+  align-items: center;
+  min-width: 400px;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+}
+.debounce-indicator .debounce-message .debounce-icon {
+  font-size: 48px;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
 .card-header {
   position: relative;
   height: 200px;
